@@ -1,7 +1,5 @@
 using CityBikeApi.Controllers;
 using CityBikeApi.ErrorHandler;
-using Microsoft.AspNetCore.Mvc;
-using System.Text.Json;
 
 namespace UnitTest
 {
@@ -29,7 +27,6 @@ namespace UnitTest
             mockHttp.When($"https://gbfs.urbansharing.com/oslobysykkel.no/{ApiPath.StationStatus}")
                    .Respond("application/json", "{\r\n    \"last_updated\": 1673778166,\r\n    \"ttl\": 10,\r\n    \"version\": \"2.2\",\r\n    \"data\": {\r\n        \"stations\": [\r\n            {\r\n                \"station_id\": \"2355\",\r\n                \"is_installed\": 1,\r\n                \"is_renting\": 1,\r\n                \"is_returning\": 1,\r\n                \"last_reported\": 1673778166,\r\n                \"num_bikes_available\": 0,\r\n                \"num_docks_available\": 12\r\n            },\r\n            {\r\n                \"station_id\": \"2350\",\r\n                \"is_installed\": 1,\r\n                \"is_renting\": 1,\r\n                \"is_returning\": 1,\r\n                \"last_reported\": 1673778166,\r\n                \"num_bikes_available\": 5,\r\n                \"num_docks_available\": 20\r\n            }\r\n        ]\r\n    }\r\n}");
             var result = service?.GetListStationStatus().Result;
-
             Assert.AreEqual(result?.Count(), 2);
             Assert.IsTrue(result?.Any(x => x.station_id == 2355 && x.num_bikes_available == 0 && x.num_docks_available == 12 && x.name == "\u00d8kern T-bane"));
             Assert.IsTrue(result?.Any(x => x.station_id == 2350 && x.num_bikes_available == 5 && x.num_docks_available == 20 && x.name == "Blindern T-Bane"));
@@ -47,7 +44,6 @@ namespace UnitTest
             Assert.IsNotNull(ex);
             Assert.IsNotNull(ex.InnerException);
             Assert.AreEqual(((CityBikeApiException)ex.InnerException).StatusCode, System.Net.HttpStatusCode.NotFound);
-
         }
     }
 }
