@@ -17,7 +17,7 @@ namespace CityBikeApi.Controllers
 
         [HttpGet("getstationinformation")]
         [SwaggerOperation(
-        Summary = "Henter en liste med status om alle stasjoner",
+        Summary = "Henter en liste med antall ledige stativer og sykler for alle stasjoner.",
         Tags = new[] { "Station" })
         ]
         public async Task<ActionResult<GetStationStatusDto>> GetListStationStatus()
