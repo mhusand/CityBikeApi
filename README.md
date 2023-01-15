@@ -4,3 +4,9 @@
 2. open cmd and navigate to ~/CityBikeApi/
 3. dotnet run
 4. Open a browser with url : https://localhost:7167/swagger/index.html
+
+
+#Tests
+1. Assuming you did step 1 above
+2. open cmd and navigate to ~/UnitTest/
+3. dotnet test
