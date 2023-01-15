@@ -48,8 +48,6 @@ namespace CityBikeApi.Services
             }
             return stationstatuslist;
         }
-
-
         private async Task<T?> Get<T>(string url)
         {
             using var httpResponse = await _httpClient.GetAsync(url);
