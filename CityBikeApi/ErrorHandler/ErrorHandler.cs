@@ -29,6 +29,7 @@ namespace CityBikeApi.ErrorHandler
                         context.Response.StatusCode = (int)HttpStatusCode.BadRequest;
                         await context.Response.WriteAsJsonAsync(errorDetails);
                         break;
+
                     case TaskCanceledException taskCanceledException:
                         errorDetails.Title = "Timeout";
                         errorDetails.Status = (int)HttpStatusCode.GatewayTimeout;
@@ -53,7 +54,6 @@ namespace CityBikeApi.ErrorHandler
                         context.Response.StatusCode = (int)HttpStatusCode.InternalServerError;
                         await context.Response.WriteAsJsonAsync(errorDetails);
                         break;
-
                 }
             }
         }

@@ -1,7 +1,5 @@
 ﻿using CityBikeApi.CityBikeDtos;
 using CityBikeApi.ErrorHandler;
-using CityBikeApi.Services;
-using System.Net;
 
 namespace CityBikeApi.Services
 {
@@ -26,8 +24,6 @@ namespace CityBikeApi.Services
         {
             var stations = await GetAllStations();
             var stationStatus = await GetStationsStatus();
-
-
             var stationstatuslist = new List<GetStationStatusDto>();
             if (stationStatus == null)
             {
@@ -35,7 +31,6 @@ namespace CityBikeApi.Services
             }
             foreach (var station in stationStatus)
             {
-
                 var stationinfo = stations?.SingleOrDefault(x => x.station_id == station.station_id);
                 if (stationinfo == null)
                 {
@@ -49,8 +44,6 @@ namespace CityBikeApi.Services
                     capacity = stationinfo.capacity,
                     num_bikes_available = station.num_bikes_available,
                     num_docks_available = station.num_docks_available
-
-
                 });
             }
             return stationstatuslist;
@@ -59,7 +52,6 @@ namespace CityBikeApi.Services
 
         private async Task<T?> Get<T>(string url)
         {
-
             using var httpResponse = await _httpClient.GetAsync(url);
 
             if (httpResponse == null)
@@ -75,10 +67,7 @@ namespace CityBikeApi.Services
             else
             {
                 throw new CityBikeApiException(httpResponse.StatusCode, httpResponse.ReasonPhrase);
-                           
             }
         }
-
-        
     }
 }

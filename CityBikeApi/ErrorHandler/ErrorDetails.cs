@@ -10,6 +10,5 @@ namespace CityBikeApi.ErrorHandler
         public int? Status { get; set; }
         [JsonPropertyName("detail")]
         public string? Detail { get; set; }
-
     }
 }

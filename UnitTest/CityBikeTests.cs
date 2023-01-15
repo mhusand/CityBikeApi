@@ -18,8 +18,7 @@ namespace UnitTest
 
         [TestMethod]
         public void GetStationStatusReturnsAListWithTwoStations()
-        {
-            
+        {            
             mockHttp.When($"https://gbfs.urbansharing.com/oslobysykkel.no/{ApiPath.StationInformation}")
                     .Respond("application/json", "{\r\n    \"last_updated\": 1673777945,\r\n    \"ttl\": 10,\r\n    \"version\": \"2.2\",\r\n    \"data\": {\r\n        \"stations\": [\r\n            {\r\n                \"station_id\": \"2355\",\r\n                \"name\": \"\\u00d8kern T-bane\",\r\n                \"address\": \"\\u00d8kernveien 147\",\r\n                \"rental_uris\": {\r\n                    \"android\": \"oslobysykkel://stations/2355\",\r\n                    \"ios\": \"oslobysykkel://stations/2355\"\r\n                },\r\n                \"lat\": 59.928894918817605,\r\n                \"lon\": 10.806234776281599,\r\n                \"capacity\": 12\r\n            },\r\n            {\r\n                \"station_id\": \"2350\",\r\n                \"name\": \"Blindern T-Bane\",\r\n                \"address\": \"Apalveien 60\",\r\n                \"rental_uris\": {\r\n                    \"android\": \"oslobysykkel://stations/2350\",\r\n                    \"ios\": \"oslobysykkel://stations/2350\"\r\n                },\r\n                \"lat\": 59.94022899411701,\r\n                \"lon\": 10.716856460117071,\r\n                \"capacity\": 25\r\n            }\r\n        ]\r\n    }\r\n}"); // Respond with JSON
             mockHttp.When($"https://gbfs.urbansharing.com/oslobysykkel.no/{ApiPath.StationStatus}")
@@ -30,9 +29,6 @@ namespace UnitTest
             Assert.AreEqual(result?.Count(), 2);
             Assert.IsTrue(result?.Any(x => x.station_id == 2355 && x.num_bikes_available == 0 && x.name == "\u00d8kern T-bane"));
             Assert.IsTrue(result?.Any(x => x.station_id == 2350 && x.num_bikes_available == 0 && x.name == "Blindern T-Bane"));
-
         }
-
-
     }
 }
