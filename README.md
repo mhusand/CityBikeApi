@@ -1,1 +1,6 @@
 # CityBikeApi
+
+1. Download and innstall dotnet 6. https://dotnet.microsoft.com/en-us/download/dotnet/6.0
+2. open cmd and navigate to ~/CityBikeApi/
+3. dotnet run
+4. Open a browser with url : https://localhost:7167/swagger/index.html
