@@ -1,6 +1,3 @@
-using CityBikeApi.Controllers;
-using CityBikeApi.ErrorHandler;
-
 namespace UnitTest
 {
     [TestClass]
