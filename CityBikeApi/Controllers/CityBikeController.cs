@@ -14,7 +14,6 @@ namespace CityBikeApi.Controllers
         {
             this.cityBikeService = cityBikeService;
         }
-
         [HttpGet("getstationinformation")]
         [SwaggerOperation(
         Summary = "Henter en liste med antall ledige stativer og sykler for alle stasjoner.",

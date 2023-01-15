@@ -17,7 +17,7 @@ namespace CityBikeApi.Services
         }
         public async Task<List<StationStatus>?> GetStationsStatus()
         {
-            var stations = await Get<GetStationStatusRequest>(ApiPath.StationInformation);
+            var stations = await Get<GetStationStatusRequest>(ApiPath.StationStatus);
             return stations?.data?.stations;
         }
         public async Task<List<GetStationStatusDto>> GetListStationStatus()
