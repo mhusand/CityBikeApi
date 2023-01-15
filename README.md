@@ -8,7 +8,7 @@ WebApi using swagger to expose requests to an open API for Oslo City Bikes
 4. Open a browser with url : https://localhost:7167/swagger/index.html
 
 
-#Tests
+# Tests
 1. Assuming you did step 1 above
 2. open cmd and navigate to ~/UnitTest/
 3. dotnet test
